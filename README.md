@@ -1,7 +1,10 @@
 This is source code for my post about dynamic captcha image in sinatra and rails application.
-Main idea is simple. I using rmagick to create dynamic image with random text and write it to responce,
-captcha text is stored in session. Code used in sinatra app is below:
+Main idea is simple. I'm using rmagick to create dynamic image with random text and write it to response,
+captcha text is stored in session. 
 
+Code for the sinatra app:
+
+```ruby
 get '/captcha/?' do
   text = String.random(4)
   session[:captacha_text] = text
@@ -18,9 +21,11 @@ get '/captcha/?' do
   content_type :jpeg  
   captcha.to_blob
 end
+```
 
-Code used in rails apps is below:
+Code that can be used in rails app:
 
+```ruby
 def show    
     text = String.random(4)
 
@@ -40,7 +45,5 @@ def show
     send_data capcha_image.to_blob, :type => 'image/jpeg', :disposition => 'inline'
 
 end
-
-This app writen in sinatra. More detailed explanation of this code (in russian is on http://beardeddev.pp.ua/posts/3)
-
-Find me on beardeddev.pp.ua
+```
+The example app writen in sinatra. More detailed explanation of this code in russian is my post.
