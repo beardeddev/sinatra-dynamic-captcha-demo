@@ -43,4 +43,4 @@ def show
     send_data capcha_image.to_blob, :type => 'image/jpeg', :disposition => 'inline'
 end
 ```
-The example app writen in sinatra. More detailed explanation of this code in russian is my post.
+The example app writen in sinatra.
